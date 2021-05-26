@@ -1,0 +1,5 @@
+export enum UserAuthState {
+    AUTHORIZED = 'AUTHORIZED',
+    NOT_AUTHORIZED = 'NOT_AUTHORIZED',
+    AUTHORIZING = 'AUTHORIZING',
+}

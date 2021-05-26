@@ -1,0 +1,67 @@
+{
+  "name": "investigation",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@date-io/date-fns": "^2.10.8",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/pickers": "^3.2.10",
+    "@material-ui/styles": "^4.11.3",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.6.0",
+    "@types/material-ui": "^0.21.8",
+    "@types/react-datepicker": "^3.1.3",
+    "eslint": "^7.19.0",
+    "install": "^0.13.0",
+    "js-sha3": "^0.8.0",
+    "material-ui": "^1.0.0-beta.47",
+    "mobx": "^6.1.1",
+    "mobx-react": "^7.1.0",
+    "moment": "^2.29.1",
+    "mongodb": "^3.6.3",
+    "npm": "^6.14.11",
+    "react": "^17.0.1",
+    "react-datepicker": "^3.4.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "styled-components": "^5.2.1",
+    "typescript": "^4.1.3",
+    "universal-cookie": "^4.0.4",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "webpack --mode production",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/react-toastify": "^4.1.0",
+    "@types/styled-components": "^5.1.7",
+    "ts-loader": "^8.0.16",
+    "webpack-cli": "^4.5.0"
+  }
+}
