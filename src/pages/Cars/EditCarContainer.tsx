@@ -1,5 +1,4 @@
 import { observer } from 'mobx-react';
-import { ICar } from '../../../../interfaces/interface';
 import { CarPostPayload, CarPutPayload, CarsContext } from '../../store/Cars';
 import { useStore } from '../../store/helpers';
 import { EditContainerWpapped, ActivityButton } from '../../styles/Cars';

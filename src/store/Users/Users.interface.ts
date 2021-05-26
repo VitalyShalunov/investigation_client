@@ -1,4 +1,3 @@
-import { ICar } from "../../../../interfaces/interface";
 import { CarGetPayload } from "../Cars";
 
 export interface IUser {

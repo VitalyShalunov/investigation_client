@@ -2,7 +2,6 @@ import { Grid, TextField } from '@material-ui/core';
 import { observer } from 'mobx-react';
 import moment from 'moment';
 import React from 'react';
-import { IClients } from '../../../../../interfaces/interface';
 import { Dropdown } from '../../../components/Dropdown';
 import { CarGetPayload, CarsContext } from '../../../store/Cars';
 import { useStore } from '../../../store/helpers';

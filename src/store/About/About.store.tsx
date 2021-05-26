@@ -1,5 +1,4 @@
 import { observable, action } from 'mobx';
-import { IClients } from '../../../../interfaces/interface';
 import { fetchFunctionApi } from '../helpers';
 
 export class AboutDataStore {
