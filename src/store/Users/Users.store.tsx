@@ -1,3 +1,4 @@
+import { sha3_512 } from 'js-sha3';
 import { observable, action, makeObservable } from 'mobx';
 import { CarGetPayload } from '../Cars';
 import { deleteFunctionApi, fetchFunctionApi, postFunctionApi, putFunctionApi } from '../helpers';
@@ -30,6 +31,8 @@ export class UsersDataStore {
             firstName: '',
             dateOfBirthday: new Date(),
             cars: [],
+            login: '',
+            password: '',
         }
     }
 
@@ -39,7 +42,7 @@ export class UsersDataStore {
         (prop: T, value: P, isCreated: boolean) => {
         const editedUser = (isCreated ? this.createdUser : this.user) as UserPostPayload;
         if (editedUser && value) {
-            if (prop === 'firstName' || prop === 'lastName') {
+            if (prop === 'firstName' || prop === 'lastName' || 'login' || 'password') {
                 editedUser[prop] = value;
             } else if (prop === 'dateOfBirthday') {
                 editedUser[prop] = value;
@@ -148,7 +151,11 @@ export class UsersDataStore {
             const userForRequest: IUser = createPayloadObject<UserPostPayload>(createdUser) as IUser;
             console.log('userForRequest', userForRequest);
 
-            const user = await postFunctionApi<UserGetPayload>(`/users/`, userForRequest);
+            const user = await postFunctionApi<UserGetPayload>(`/users`, {
+                ...userForRequest,
+                login: sha3_512(userForRequest.login),
+                password: sha3_512(userForRequest.password)
+            });
 
             if (user && typeof user === 'object') {
                 console.log('user', user);

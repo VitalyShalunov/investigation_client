@@ -1,13 +1,17 @@
 import { observer } from 'mobx-react';
 
 import React, { useState } from 'react';
+import { UserAuthState } from '../constants/enum';
 import LoginWindow from '../pages/Users/Login';
-import { AuthProvider } from '../store/Auth';
+import { AuthContext, AuthProvider } from '../store/Auth';
+import { useStore } from '../store/helpers';
 import { Pages } from '../store/helpers/arrayPages';
 import { HeaderContainer, HeaderItem, HeaderWrapped, LogIn } from '../styles/Header';
 
 export const Header = observer(({ activePage }: { activePage: string }) => {
     const [isShowLoginWindow, setIsShowLoginWindow] = useState<boolean>(false);
+
+    const { typeAuth } = useStore(AuthContext);
 
     // take control over the style of a component
     const [style, setStyle] = useState({});
@@ -51,10 +55,7 @@ export const Header = observer(({ activePage }: { activePage: string }) => {
                 Login
             </LogIn>
             {isShowLoginWindow
-                &&
-                <AuthProvider>
-                    <LoginWindow style={style} />
-                </AuthProvider>
+                && <LoginWindow style={style} />
             }
             <HeaderContainer>
                 {Object.keys(Pages).map((itemPage: string) => {

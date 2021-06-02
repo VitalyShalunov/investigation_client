@@ -35,6 +35,22 @@ export const EditUser = observer(({ user, onChange }: IEditUser) => {
             <Grid item xs={12} sm={6}>
                 <Input
                     type="text"
+                    placeholder={'login'}
+                    value={user?.login || ''}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => onChange('login', event.target.value)}
+                />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <Input
+                    type="password"
+                    placeholder={'password'}
+                    value={user?.password || ''}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => onChange('password', event.target.value)}
+                />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+                <Input
+                    type="text"
                     placeholder={'last name'}
                     value={user?.lastName || ''}
                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => onChange('lastName', event.target.value)}

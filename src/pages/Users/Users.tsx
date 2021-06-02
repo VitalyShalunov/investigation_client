@@ -15,9 +15,10 @@ import { SearchInput } from '../../styles/input';
 import React, { useState } from 'react';
 import { Popup } from '../../components/Popup';
 import { CreateUser } from './User/CreateUser';
-import { Header } from '../../components/Header';
+import { Header } from '../../Header/Header';
 import { Pages } from '../../store/helpers/arrayPages';
 import { IUser } from '../../store/Users/Users.interface';
+import { HeaderContainer } from '../../Header/HeaderContainer';
 
 export const Users = observer(() => {
     const store = useStore(UsersContext);
@@ -39,7 +40,7 @@ export const Users = observer(() => {
     
     return (
         <UsersPage>
-            <Header activePage={Pages.Users}/>
+            <HeaderContainer activePage={Pages.Users}/>
             <SearchInput
                 onChange={onChange}
             />

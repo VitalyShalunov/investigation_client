@@ -6,6 +6,8 @@ export interface IUser {
     lastName: string,
     dateOfBirthday: Date,
     cars: CarGetPayload[],
+    login: string,
+    password: string,
 }
 export type UserGetPayload = IUser;
 

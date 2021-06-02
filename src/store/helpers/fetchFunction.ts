@@ -36,7 +36,7 @@ const handleResponse = async <T>(response: Response | Error): Promise<T> => {
     });
 };
 
-export const fetchFunctionApi = <T>(urlParams: string | URL, requestInit?: RequestInit): Promise<T> => {
+const getCookieBody = (requestInit?: RequestInit) => {
     const cookies = new Cookies();
 
     const access_token =cookies.get('access_token');
@@ -44,7 +44,6 @@ export const fetchFunctionApi = <T>(urlParams: string | URL, requestInit?: Reque
     //     access,
     // } = cookies.get('access_token');
 
-    const url = urlParams instanceof URL ? urlParams.toString() : `${API_URL}${urlParams}`;
 
     const accessTokenHeader = new Headers({
         'Authorization': `Bearer ${access_token}`,
@@ -61,6 +60,10 @@ export const fetchFunctionApi = <T>(urlParams: string | URL, requestInit?: Reque
             headers: accessTokenHeader
         };
     }
+    return requestInit;
+}
+export const fetchFunctionApi = <T>(urlParams: string | URL, requestInit?: RequestInit): Promise<T> => {
+    const url = urlParams instanceof URL ? urlParams.toString() : `${API_URL}${urlParams}`;
     // if (requestInit) {
     //     requestInit.credentials = 'include';
     // } else {
@@ -69,7 +72,7 @@ export const fetchFunctionApi = <T>(urlParams: string | URL, requestInit?: Reque
     //     }
     // }
     return new Promise<T>((resolve, reject) => {
-        fetch(url, requestInit)
+        fetch(url, getCookieBody(requestInit))
             .then((users: Response) => {
                 handleResponse<T>(users)
                     .then(resolve)
@@ -84,6 +87,7 @@ export const postFunctionApi = async <T>(urlParams: string, body: any): Promise<
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
+            ...getCookieBody().headers,
             'Content-Type': 'application/json',
         },
     });
@@ -105,10 +109,11 @@ export const deleteFunctionApi = async <T>(urlParams: string | URL): Promise<T> 
     const res = await fetch(`${API_URL}${urlParams}`, {
         method: 'DELETE',
         headers: {
-            'Access-Control-Allow-Methods': '*',
-            'Access-Control-Allow-Origin': '*',
-            'Authorization': '*',
-            'Content-Type': 'text/html; charset=utf-8'
+            ...getCookieBody().headers,
+            // 'Access-Control-Allow-Methods': '*',
+            // 'Access-Control-Allow-Origin': '*',
+            // 'Authorization': '*',
+            // 'Content-Type': 'text/html; charset=utf-8'
         },
     });
     return handleResponse<T>(res);

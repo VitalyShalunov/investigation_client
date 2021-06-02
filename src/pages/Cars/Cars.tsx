@@ -1,11 +1,12 @@
 import { observer } from 'mobx-react';
 import { ICar } from '../../store/Cars/Cars.interface';
-import { Header } from '../../components/Header';
+import { Header } from '../../Header/Header';
 import { CarPutPayload, CarsContext } from '../../store/Cars';
 import { CarsPage, CarsContainer, ListAndEditContainer } from '../../styles/Cars';
 import { useStore } from '../../store/helpers';
 import { Pages } from '../../store/helpers/arrayPages';
 import { CarItem, EditContainer, AddNewCar } from './';
+import { HeaderContainer } from '../../Header/HeaderContainer';
 
 export const Cars = observer(() => {
     const store = useStore(CarsContext);
@@ -16,7 +17,7 @@ export const Cars = observer(() => {
     }
     return (
         <CarsPage>
-            <Header activePage={Pages.Cars} />
+            <HeaderContainer activePage={Pages.Cars} />
             {state === 'loaded'
                 && <ListAndEditContainer>
                     <CarsContainer>
