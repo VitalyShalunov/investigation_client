@@ -15,7 +15,8 @@ services:
     #       # need for saving db data
     #       #- mongodb_data_container:/data/db
     investigation_client:
-        build: ./intestigation_client
+        # build: ./intestigation_client
+        build: ./
         container_name: client
         restart: always
         # command npm run start
