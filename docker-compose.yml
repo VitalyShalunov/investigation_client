@@ -20,8 +20,8 @@ services:
         container_name: client
         restart: always
         # command npm run start
-        links: 
-          - investigation_server
+        # links: 
+        #   - investigation_server
         ports:
           - 3000:3000
 volumes:
