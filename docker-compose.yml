@@ -1,0 +1,27 @@
+version: "3"
+services:
+    # mongodb_container:
+    #     image: mongo
+    #     container_name: mongodb
+    #     restart: always
+    #     env_file:
+    #       - database.env
+    #     environment:
+    #       # MONGO_INITDB_ROOT_USERNAME: root
+    #       # MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    #     ports:
+    #       - 27017:27017
+    #     volumes:
+    #       # need for saving db data
+    #       #- mongodb_data_container:/data/db
+    investigation_client:
+        build: ./intestigation_client
+        container_name: client
+        restart: always
+        # command npm run start
+        links: 
+          - investigation_server
+        ports:
+          - 3000:3000
+volumes:
+    mongodb_data_container:
