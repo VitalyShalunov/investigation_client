@@ -19,6 +19,7 @@ services:
         build: ./
         container_name: client
         restart: always
+        tty: true
         # command npm run start
         # links: 
         #   - investigation_server
